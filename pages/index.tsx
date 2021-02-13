@@ -12,7 +12,7 @@ const Home = ({ groups }) => {
         <title>hackability</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Hello hackability</h1>
+      <h1>hackability</h1>
       <pre>{JSON.stringify(groups, null, 2)}</pre>
     </div>
   );
