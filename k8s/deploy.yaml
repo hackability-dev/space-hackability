@@ -16,7 +16,7 @@ spec:
         app: hackability
     spec:
       containers:
-        - image: hackabilitydev/space-hackability:latest
+        - image: hackabilitydev/space-hackability:v2
           name: space-hackability
           envFrom:
             - secretRef:
