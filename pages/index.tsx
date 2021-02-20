@@ -13,6 +13,7 @@ const Home = ({ groups }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>hackability</h1>
+      <p> Welcome CI/CD</p>
       <pre>{JSON.stringify(groups, null, 2)}</pre>
     </div>
   );
