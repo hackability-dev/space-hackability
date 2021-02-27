@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "@apollo/client": "^3.3.11",
@@ -17,6 +18,11 @@
     "react-dom": "17.0.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "1.21.1",
+    "@graphql-codegen/introspection": "1.18.1",
+    "@graphql-codegen/typed-document-node": "^1.18.2",
+    "@graphql-codegen/typescript": "1.21.0",
+    "@graphql-codegen/typescript-operations": "^1.17.14",
     "@types/node": "^14.14.27",
     "@types/react": "^17.0.2",
     "prisma": "2.16.1",
