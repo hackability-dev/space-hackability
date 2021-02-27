@@ -22,7 +22,6 @@ const Home = ({ groups }) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const groups = await prisma.group.findMany();
   return {
     props: {
       groups,
