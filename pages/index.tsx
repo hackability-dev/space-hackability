@@ -1,10 +1,10 @@
 import { ApolloClient, gql, InMemoryCache } from '@apollo/client';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetStaticProps } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:3000/api/graphql',
+  uri: 'https://space.k8s.hackability.dev/api/graphql',
   cache: new InMemoryCache(),
 });
 
@@ -24,7 +24,7 @@ const Home = ({ groups }) => {
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await client.query({
     query: gql`
       query GetGroups {
