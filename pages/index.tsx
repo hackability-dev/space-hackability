@@ -1,9 +1,12 @@
-import { PrismaClient } from '@prisma/client';
+import { ApolloClient, gql, InMemoryCache } from '@apollo/client';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 
-const prisma = new PrismaClient();
+const client = new ApolloClient({
+  uri: 'http://localhost:3000/api/graphql',
+  cache: new InMemoryCache(),
+});
 
 const Home = ({ groups }) => {
   return (
@@ -22,9 +25,20 @@ const Home = ({ groups }) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
+  const res = await client.query({
+    query: gql`
+      query GetGroups {
+        groups {
+          id
+          description
+          name
+        }
+      }
+    `,
+  });
   return {
     props: {
-      groups,
+      groups: res.data.groups,
     },
   };
 };
