@@ -1,7 +1,12 @@
+fragment GroupPreview on Group {
+  id
+  description
+  name
+  image
+}
+
 query GetGroups {
   groups {
-    id
-    description
-    name
+    ...GroupPreview
   }
 }

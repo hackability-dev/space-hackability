@@ -45,6 +45,11 @@ export type Query = {
   hello: Scalars['String'];
 };
 
+export type GroupPreviewFragment = (
+  { __typename?: 'Group' }
+  & Pick<Group, 'id' | 'description' | 'name' | 'image'>
+);
+
 export type GetGroupsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -52,9 +57,9 @@ export type GetGroupsQuery = (
   { __typename?: 'Query' }
   & { groups: Array<(
     { __typename?: 'Group' }
-    & Pick<Group, 'id' | 'description' | 'name'>
+    & GroupPreviewFragment
   )> }
 );
 
-
-export const GetGroupsDocument: DocumentNode<GetGroupsQuery, GetGroupsQueryVariables> = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetGroups"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"groups"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]};
+export const GroupPreviewFragmentDoc: DocumentNode<GroupPreviewFragment, unknown> = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"GroupPreview"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Group"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"image"}}]}}]};
+export const GetGroupsDocument: DocumentNode<GetGroupsQuery, GetGroupsQueryVariables> = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetGroups"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"groups"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"GroupPreview"}}]}}]}},...GroupPreviewFragmentDoc.definitions]};

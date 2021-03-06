@@ -13,6 +13,7 @@ const typeDefs = gql`
   }
 
   type UserGroup {
+    # Role is the roel of the user
     role: String!
     user: User!
   }
