@@ -1,7 +1,6 @@
 import { ApolloServer, gql, makeExecutableSchema } from 'apollo-server-micro';
-import { Group, PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { getDbService } from '../../src/queries/db.service';
+import { IFindAllGroupsResult } from '../../src/queries/queries.queries';
 
 const typeDefs = gql`
   type Group {
@@ -13,7 +12,6 @@ const typeDefs = gql`
   }
 
   type UserGroup {
-    # Role is the roel of the user
     role: String!
     user: User!
   }
@@ -37,21 +35,18 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    groups: () => {
-      return prisma.group.findMany();
+    groups: async () => {
+      return (await getDbService()).findAllGroups();
     },
     hello: () => 'World',
   },
   Group: {
-    users: (group: Group) => {
-      return prisma.userGroup.findMany({
-        where: {
-          group_id: group.id,
-        },
-        include: {
-          user: true,
-        },
-      });
+    users: async (group: IFindAllGroupsResult) => {
+      const users = await (await getDbService()).findUsersInGroup(group.id);
+      return users.map((user) => ({
+        role: user.role,
+        user: user,
+      }));
     },
   },
 };
