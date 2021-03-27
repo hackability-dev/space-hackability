@@ -2,10 +2,10 @@ name: CI Migration
 
 on:
   push:
-    # paths:
-    #   - 'db/**/*'
-    branches:
-      - '**'
+    paths:
+      - 'db/**/*'
+      - '.github/workflows/ci-migration.yml'
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -16,7 +16,8 @@ jobs:
         id: get_version
         run: |
           VERSION=$(ls db/migrations | sort -V | tail -n 1 | cut -c 1-14)
-          echo "::set-output name=timestamp::$VERSION"
+          echo $VERSION
+          echo "::set-output name=version::$VERSION"
       - name: Docker meta
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
