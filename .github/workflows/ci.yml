@@ -12,11 +12,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Get Timestamp
-        id: get_timestamp
+      - name: Get Vars
+        id: get_vars
         run: |
-          TS=$(date +%s)
-          echo "::set-output name=timestamp::$TS"
+          echo "::set-output name=ts::$(date +%s)"
+          echo "::set-output name=sha::$(git rev-parse --short HEAD)"
+          echo "::set-output name=branch::$(git rev-parse --abbrev-ref HEAD)"
       - name: Docker meta
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
@@ -28,7 +29,7 @@ jobs:
             {{version}}
             {{major}}.{{minor}}
           tag-custom: |
-            ts-${{ steps.get_timestamp.outputs.timestamp }}
+            ${{steps.get_vars.outputs.branch}}-${{steps.get_vars.outputs.sha}}-${{ steps.get_vars.outputs.ts }}
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       - name: Login to GitHub Container Registry
