@@ -1,13 +1,13 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { InferGetStaticPropsType } from 'next';
+import styled from '@emotion/styled';
+import { InferGetServerSidePropsType } from 'next';
 import Head from 'next/head';
 import { FC } from 'react';
-import { GetGroupsDocument } from '../src/generated/graphql';
+import { BetaAlert } from '../components/beta-alert';
 import { Footer } from '../components/footer';
 import { GroupPreview } from '../components/group-preview';
 import { Nav } from '../components/nav';
-import { BetaAlert } from '../components/beta-alert';
-import styled from '@emotion/styled';
+import { GetGroupsDocument } from '../src/generated/graphql';
 
 const client = new ApolloClient({
   uri: 'https://space.k8s.hackability.dev/api/graphql',
@@ -26,7 +26,7 @@ const GroupsList = styled.div`
   }
 `;
 
-const Home: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ groups }) => {
+const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ groups }) => {
   return (
     <div>
       <Nav />
@@ -49,7 +49,7 @@ const Home: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ groups }) =>
 
 export default Home;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await client.query({
     query: GetGroupsDocument,
   });
