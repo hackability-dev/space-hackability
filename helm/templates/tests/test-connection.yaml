@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "space-hackability.fullname" . }}-test-connection"
+  labels:
+    {{- include "space-hackability.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "space-hackability.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
