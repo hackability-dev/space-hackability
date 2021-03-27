@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   transforms: [
     {
@@ -9,10 +11,5 @@ module.exports = {
   srcDir: './src/',
   failOnError: false,
   camelCaseColumnNames: false,
-  db: {
-    host: 'localhost',
-    user: 'postgres',
-    dbName: 'space_hackability_2',
-    password: 'postgres',
-  },
+  dbUrl: process.env.DATABASE_URL,
 };

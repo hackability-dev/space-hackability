@@ -1200,12 +1200,12 @@
   resolved "https://registry.yarnpkg.com/@opentelemetry/context-base/-/context-base-0.14.0.tgz#c67fc20a4d891447ca1a855d7d70fa79a3533001"
   integrity sha512-sDOAZcYwynHFTbLo6n8kIbLiVF3a3BLkrmehJUyEbT9F+Smbi47kLGS2gG2g0fjBLR/Lr1InPD7kXL7FaTqEkw==
 
-"@pgtyped/cli@^0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@pgtyped/cli/-/cli-0.10.1.tgz#550139baafee354d8bfc486c1678d7116c0e9c82"
-  integrity sha512-j9mmrsqk2WhpWK6u6TGQyuDvg6VUiMJk1ddC2yp6YxYr0lfQlD83lhLqg2MkEuxFSDvi0Ktx+/eNMfhIQoD9bg==
+"@pgtyped/cli@^0.10.2":
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/@pgtyped/cli/-/cli-0.10.2.tgz#a99fcdd4bbfd1815980e9bc1b6ac46f34fbc2c16"
+  integrity sha512-DvOOBj8YArIElEAAlj3QSdUak171HYRbN0FlJyJ3+QYX9BHDN7JYkoD/47gdQyUMJ7mIbcOl3M326ofKSwHNAw==
   dependencies:
-    "@pgtyped/query" "^0.10.1"
+    "@pgtyped/query" "^0.10.2"
     "@types/nunjucks" "^3.1.3"
     camel-case "^4.1.1"
     chalk "^4.0.0"
@@ -1220,10 +1220,10 @@
     pascal-case "^3.1.1"
     ts-parse-database-url "^1.0.3"
 
-"@pgtyped/query@^0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@pgtyped/query/-/query-0.10.1.tgz#540dd98d15725d3d3a2dfdae192cdf050430a147"
-  integrity sha512-dXq8KB/EOPiwu6/tnFAEBgL1J1nuwOq3lBQA+UTTYkvc4YKEtB54JChCFSVlDYe0r7Uv8VCrbYobx1GuxU/7rw==
+"@pgtyped/query@^0.10.2":
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/@pgtyped/query/-/query-0.10.2.tgz#5d364ed2106b9fdfebfe5e1b3c07e618f1333b08"
+  integrity sha512-RP9UTtd7QBBB4tqWLLtQbVM+l2LGtJQhM9GP4kYMeeLO/XDd1gjaqQqSBFbsw5w3rtiv/8WC97xew5zjnpswrQ==
   dependencies:
     "@pgtyped/wire" "^0.10.1"
     "@types/chalk" "^2.2.0"
